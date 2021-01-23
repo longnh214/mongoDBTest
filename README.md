@@ -2,6 +2,12 @@
 
 
 
+
+
+
+
+
+
 ## Dependency Version
 
 ```
@@ -9,6 +15,11 @@ Spring Boot version : v2.4.2
 MongoDB version : v4.4.3
 Java version : JDK 8
 ```
+
+
+
+
+
 
 
 
@@ -62,6 +73,12 @@ Java version : JDK 8
 
 
 
+
+
+
+
+
+
 ## application.properties
 
 ```properties
@@ -75,6 +92,12 @@ spring.data.mongodb.username=[mongoDB 계정 id]
 spring.data.mongodb.password=[mongoDB 계정 p/w]
 spring.datasource.driverClassName=com.mongodb.Mongo
 ```
+
+
+
+
+
+
 
 
 
@@ -119,6 +142,12 @@ public class MongoConfig extends MongoAutoConfiguration {
 
 
 
+
+
+
+
+
+
 ## DB Model
 
 ```Java
@@ -150,6 +179,12 @@ Lombok Annotation + MongoDB Document Annotation
 
 
 
+
+
+
+
+
+
 ## MongoDB Repository Class (extends MongoRepository) like JPA
 
 ```java
@@ -157,6 +192,12 @@ public interface CustomerRepository extends MongoRepository<Customer, String>{
 	List<Customer> findByEmail(String email);
 }
 ```
+
+
+
+
+
+
 
 
 
