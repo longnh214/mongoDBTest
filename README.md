@@ -27,8 +27,8 @@ Java version : JDK 8
 
 ```xml
 <dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 
 <dependency>
@@ -107,23 +107,23 @@ spring.datasource.driverClassName=com.mongodb.Mongo
 @Configuration
 public class MongoConfig extends MongoAutoConfiguration {
 	@Value("${spring.data.mongodb.username}") 
-    // application.properties에서 정의한 MongoDB에 계정 아이디
+    	// application.properties에서 정의한 MongoDB에 계정 아이디
 	private String userName;
 
 	@Value("${spring.data.mongodb.password}") 
-    // application.properties에서 정의한 MongoDB에 계정 비밀번호
+    	// application.properties에서 정의한 MongoDB에 계정 비밀번호
 	private String password;
 
 	@Value("${spring.data.mongodb.database}") 
-    // application.properties에서 정의한 MongoDB에있는 데이터베이스
+    	// application.properties에서 정의한 MongoDB에있는 데이터베이스
 	private String database;
 	
 	@Value("${spring.data.mongodb.host}") 
-    // application.properties에서 정의한 MongoDB에있는 host
+    	// application.properties에서 정의한 MongoDB에있는 host
 	private String host;
 	
 	@Value("${spring.data.mongodb.port}") 
-    // application.properties에서 정의한 MongoDB에있는 port 번호
+    	// application.properties에서 정의한 MongoDB에있는 port 번호
 	private String port;
 
 	@Bean
@@ -175,7 +175,7 @@ public class Customer {
 }
 ```
 
-Lombok Annotation + MongoDB Document Annotation
+###Lombok Annotation + MongoDB Document Annotation
 
 
 
