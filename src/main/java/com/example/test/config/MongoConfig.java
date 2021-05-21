@@ -13,11 +13,11 @@ import com.mongodb.client.MongoClients;
 
 @Configuration
 public class MongoConfig extends MongoAutoConfiguration {
-	@Value("${spring.data.mongodb.username}") // application.properties에서 정의한 MongoDB에 계정 아이디
-	private String userName;
-
-	@Value("${spring.data.mongodb.password}") // application.properties에서 정의한 MongoDB에 계정 비밀번호
-	private String password;
+//	@Value("${spring.data.mongodb.username}") // application.properties에서 정의한 MongoDB에 계정 아이디
+//	private String userName;
+//
+//	@Value("${spring.data.mongodb.password}") // application.properties에서 정의한 MongoDB에 계정 비밀번호
+//	private String password;
 
 	@Value("${spring.data.mongodb.database}") // application.properties에서 정의한 MongoDB에있는 데이터베이스
 	private String database;
@@ -36,7 +36,7 @@ public class MongoConfig extends MongoAutoConfiguration {
 	@Bean
 	public MongoClient mongoClient() {
 		MongoClient mongoClient = MongoClients.create(
-	            new ConnectionString("mongodb://"+userName+":"+password+"@"+host+":"+port+"/"+database+"?authSource=admin"));
+	            new ConnectionString("mongodb://"+host+":"+port+"/"+database+"?authSource=admin"));
 		return mongoClient;
 	}
 }

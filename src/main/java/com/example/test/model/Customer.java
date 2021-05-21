@@ -1,10 +1,10 @@
 package com.example.test.model;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +13,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Document(collection = "customers")
+@Builder
 public class Customer {
 	@Id
 	private String _id;
@@ -23,8 +25,6 @@ public class Customer {
 	private String password;
 	private String nickname;
 	private boolean status;
-	
-	private List<Epub> epubList;
 	
 	public Customer(String email, String password, String nickname){
 		this.email = email;

@@ -27,73 +27,73 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
-	@Autowired
-	private CustomerRepository customerRepository;
-	
-	@GetMapping("/customer")
-	@ApiOperation(value = "getAllCustomers", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<List<Customer>> getAllCustomers() {
-		return new ResponseEntity<>(customerRepository.findAll(),HttpStatus.OK);
-	}
-	
-	@PostMapping("/customer")
-	@ApiOperation(value = "addCustomer")
-	@ApiImplicitParams({
-		@ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
-	})
-	public ResponseEntity<Boolean> addCustomer(@RequestBody Customer customer) {
-		try {
-			if(customerRepository.save(customer) != null) {
-				return new ResponseEntity<>(true, HttpStatus.OK);
-			}
-			else
-				return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
-		}catch(Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	@PutMapping("/customer")
-	@ApiOperation(value = "updateCustomer")
-	@ApiImplicitParams({
-		@ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
-	})
-	public ResponseEntity<Boolean> updateCustomer(@RequestBody Customer customer) {
-		try {
-			List<Customer> findcustomerList = customerRepository.findByEmail(customer.getEmail());
-			if(findcustomerList.size() == 1) {
-				Customer precustomer = findcustomerList.get(0);
-				precustomer.setPassword(customer.getPassword());
-				precustomer.setNickname(customer.getNickname());
-				customerRepository.save(precustomer);
-				return new ResponseEntity<>(true, HttpStatus.OK);
-			}
-			else
-				return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
-		}catch(Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	@DeleteMapping("/customer")
-	@ApiOperation(value = "deleteCustomer")
-	@ApiImplicitParams({
-		@ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
-	})
-	public ResponseEntity<Boolean> deleteCustomer(@RequestBody Customer customer) {
-		try {
-			
-			if(customer != null) {
-				customerRepository.delete(customer);
-				return new ResponseEntity<>(true, HttpStatus.OK);
-			}
-			else
-				return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
-		}catch(Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+    @Autowired
+    private CustomerRepository customerRepository;
+    
+    @GetMapping("/customer")
+    @ApiOperation(value = "getAllCustomers", produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        return new ResponseEntity<>(customerRepository.findAll(),HttpStatus.OK);
+    }
+    
+    @PostMapping("/customer")
+    @ApiOperation(value = "addCustomer")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
+    })
+    public ResponseEntity<Boolean> addCustomer(@RequestBody Customer customer) {
+        try {
+            if(customerRepository.save(customer) != null) {
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            else
+                return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @PutMapping("/customer")
+    @ApiOperation(value = "updateCustomer")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
+    })
+    public ResponseEntity<Boolean> updateCustomer(@RequestBody Customer customer) {
+        try {
+            List<Customer> findcustomerList = customerRepository.findByEmail(customer.getEmail());
+            if(findcustomerList.size() == 1) {
+                Customer precustomer = findcustomerList.get(0);
+                precustomer.setPassword(customer.getPassword());
+                precustomer.setNickname(customer.getNickname());
+                customerRepository.save(precustomer);
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            else
+                return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @DeleteMapping("/customer")
+    @ApiOperation(value = "deleteCustomer")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "customer", value = "회원 객체", required = true, dataType = "customer")
+    })
+    public ResponseEntity<Boolean> deleteCustomer(@RequestBody Customer customer) {
+        try {
+            
+            if(customer != null) {
+                customerRepository.delete(customer);
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            else
+                return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
